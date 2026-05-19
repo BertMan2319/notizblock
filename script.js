@@ -5,17 +5,36 @@ let notes = [`banana`, `rasen mähen`];
 
 //wann werden sie angezeigt
 function renderNotes(){
-    //ich muss definieren, wo die notizen angezeigt werden sollen
+    
     let contentRef = document.getElementById(`content`);
+    contentRef.innerHTML = ""; 
 
-    contentRef.innerHTML = notes;
+    for (let indexNote = 0; indexNote < notes.length; indexNote++) {
+        const note = notes[indexNote];
+        contentRef.innerHTML += getNoteTemplate(note);
+    }  
 }
 
-
-
-
-
+function getNoteTemplate(note){
+    return `<p>+ ${note}</p>`;
+}
 
 //notizen hinzufügen
+
+function addNote(){
+
+let noteInputRef = document.getElementById(`note_input`);
+let noteInput = noteInputRef.value;
+
+notes.push(noteInput);
+
+renderNotes();
+
+noteInputRef.value = "";
+} 
+
+
+
+
 //notizen löschen
 //notizen archivieren
